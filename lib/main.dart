@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:vpn/screens/home/chose_server.dart';
+import 'screens/home/all_location.dart';
+import 'screens/home/home_screen.dart';
+import 'screens/home/home_screen_connected.dart';
 import 'screens/splash_screen.dart';
 
 void main() {
@@ -39,7 +43,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SplashScreen(),
+      home: const HomeScreenConnected(),
     );
   }
 }

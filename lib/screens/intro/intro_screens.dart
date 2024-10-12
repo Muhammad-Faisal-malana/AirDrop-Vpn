@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:vpn/screens/home/home_screen.dart';
 
-import '../home/home.dart';
 import '../home/home_screen_connected.dart';
 
 class IntroScreen extends StatefulWidget {

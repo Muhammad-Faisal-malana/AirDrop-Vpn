@@ -18,8 +18,9 @@ class _HomeScreenConnectedState extends State<HomeScreenConnected> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
+            flex: 60,
             child: Container(
-              height: MediaQuery.of(context).size.height * 0.6,
+             
               decoration: const BoxDecoration(
                   image: DecorationImage(
                 image: AssetImage("assets/images/map-bg.png"),
@@ -48,7 +49,17 @@ class _HomeScreenConnectedState extends State<HomeScreenConnected> {
                         ),
                       ],
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                    Image.asset('assets/images/globe.png'),
+                    const Text(
+                      'Connection is secured',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 13, 203, 120),
+                        fontSize: 24,
+                        fontFamily: 'Gilroy',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
                     const Text(
                       'connecting time',
                       textAlign: TextAlign.center,
@@ -70,25 +81,15 @@ class _HomeScreenConnectedState extends State<HomeScreenConnected> {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    _buildSelectedCountryCard(),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _buildDownloadUploadwidget(),
-                        const SizedBox(width: 10),
-                        _buildDownloadUploadwidget(
-                            name: 'Upload :',
-                            image: 'assets/images/upload.svg',
-                            speed: '500 Mb'),
-                      ],
-                    )
+                   
+                    
                   ],
                 ),
               ),
             ),
           ),
           Expanded(
+            flex: 40,
             child: Stack(
               children: [
                 Positioned(
@@ -99,30 +100,51 @@ class _HomeScreenConnectedState extends State<HomeScreenConnected> {
                     'assets/images/bottom_curved.png',
                     fit: BoxFit.fitWidth,
                     width: double.infinity,
-                    height: 220,
+                    height: 340,
                   ),
                 ),
-                Positioned(
-                    bottom: 150,
-                    left: 0,
-                    right: 0,
-                    child: Image.asset('assets/images/globe.png')),
                 Positioned(
                   left: 20,
                   right: 20,
                   bottom: 100,
-                  child: Row(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _buildCountryWidget(),
-                      _buildCountryWidget(
-                          image: 'assets/images/right-arrow 1.svg',
-                          name: '37.120.202.186',
-                          speed: 'IP address'),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          _buildDownloadUploadwidget(),
+                          const SizedBox(width: 10),
+                          _buildDownloadUploadwidget(
+                              name: 'Upload :',
+                              image: 'assets/images/upload.svg',
+                              speed: '500 Mb'),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _buildDownloadUploadwidget(
+
+                             name: 'Local IP',
+                            image: 'assets/images/upload.svg',
+                            speed: '0 404 404 404',
+                          ),
+                          const SizedBox(width: 10),
+                          _buildDownloadUploadwidget(
+                            name: 'VPN IP',
+                            image: 'assets/images/upload.svg',
+                            speed: '0 404 404 404',
+                          ),
+                        ],
+                      )
                     ],
                   ),
                 ),
                 _buildChangeServerBtn(),
+                _buildSelectedCountryCard()
+                
               ],
             ),
           )
@@ -172,78 +194,85 @@ class _HomeScreenConnectedState extends State<HomeScreenConnected> {
     );
   }
 
-  Container _buildSelectedCountryCard() {
-    return Container(
-      width: 258,
-      height: 60,
-      padding: const EdgeInsets.all(12),
-      clipBehavior: Clip.antiAlias,
-      decoration: ShapeDecoration(
-        color: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
-        shadows: const [
-          BoxShadow(
-            color: Color(0x19FFFFFF),
-            blurRadius: 1,
-            offset: Offset(0, 1),
-            spreadRadius: 0,
-          ),
-        ],
-      ),
-      child: const Row(
+  SizedBox _buildSelectedCountryCard() {
+    return SizedBox(
+      width: double.infinity,
+      child: Column(
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Netherlands',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xFF00081E),
-                  fontSize: 14,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w400,
-                ),
+          Container(
+            width: 238,
+            height: 60,
+            padding: const EdgeInsets.all(12),
+            clipBehavior: Clip.antiAlias,
+            decoration: ShapeDecoration(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
               ),
-              Text(
-                'Amsterdam',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0x6600081E),
-                  fontSize: 10,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w400,
+              shadows: const [
+                BoxShadow(
+                  color: Color(0x19FFFFFF),
+                  blurRadius: 1,
+                  offset: Offset(0, 1),
+                  spreadRadius: 0,
                 ),
-              )
-            ],
-          ),
-          Spacer(),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Strength',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0x6600081E),
-                  fontSize: 10,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w400,
+              ],
+            ),
+            child: const Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Netherlands',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0xFF00081E),
+                        fontSize: 14,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    Text(
+                      'Amsterdam',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0x6600081E),
+                        fontSize: 10,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    )
+                  ],
                 ),
-              ),
-              Text(
-                '14%',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xFF00081E),
-                  fontSize: 11,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w400,
+                Spacer(),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Strength',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0x6600081E),
+                        fontSize: 10,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    Text(
+                      '14%',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0xFF00081E),
+                        fontSize: 11,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    )
+                  ],
                 ),
-              )
-            ],
+              ],
+            ),
           ),
         ],
       ),
@@ -252,7 +281,7 @@ class _HomeScreenConnectedState extends State<HomeScreenConnected> {
 
   Container _buildDownloadUploadwidget({String? name, image, speed}) {
     return Container(
-      width: 124,
+      
       height: 60,
       padding: const EdgeInsets.all(12),
       clipBehavior: Clip.antiAlias,
@@ -279,16 +308,7 @@ class _HomeScreenConnectedState extends State<HomeScreenConnected> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                name ?? 'Download :',
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Color(0x6600081E),
-                  fontSize: 10,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
+             
               Text(
                 speed ?? '499 MB',
                 textAlign: TextAlign.center,
@@ -298,7 +318,17 @@ class _HomeScreenConnectedState extends State<HomeScreenConnected> {
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w400,
                 ),
-              )
+              ),
+               Text(
+                name ?? 'Download :',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Color(0x6600081E),
+                  fontSize: 10,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
             ],
           ),
         ],
